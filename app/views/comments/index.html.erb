@@ -1,0 +1,11 @@
+<div class="my-blog-comments">
+
+<% @comments.each do |comment| %>
+<h4 class="blog-post-title"><%= comment.commenter %></h4>
+      <p class="blog-post-meta">Created on <%= comment.created_at %></p>  
+      <p><%= comment.body %><p> 
+      	<%= link_to 'Destroy Comment', [comment.article, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %> 
+      	<% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="my-blog">
+    <h3 class="colorBlueText">Archives</h3>
+
+   <% @articles_months.sort.reverse.each do |month, articles| %>
+   <div class="smallMenuMonthText colorBlueText"><%=h month.strftime("%B %Y") %></div>
+              	  <ol class="list-unstyled smallMenuText">
+
+        <% for article in articles %>
+       <li><%= icon('angle-right', class: 'strong') %><%=h link_to article.title, article_path(article) %></li>
+        <% end %>
+   </ol>
+    <% end %>
+</div>
+          	 
+             

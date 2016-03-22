@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Code-Addict</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap -->
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<%= auto_discovery_link_tag(:rss, "http://www.code-addict.pl/feed") %>
+		<%= auto_discovery_link_tag :rss, feed_url(:format => :rss) %>
+		<%= favicon_link_tag %>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li>
+							<div class="navBrandText">
+								Code-Addict
+							</div><span class="smallNavText"> by Michał Kostewicz</span>
+
+						</li>
+						<li >
+							<%= link_to 'Blog posts', controller: 'articles' %>
+						</li>
+						<li >
+							<%= link_to 'About the blog!', controller: 'welcome' %>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav pull-right">
+						<li class="adminPanelNavText">
+							<%= link_to 'Administration panel', controller: 'administrator' %>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 blog-main">
+					<%= content_for?(:content) ? yield(:content) : yield %>
+				</div>
+				<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+					<div class="sidebar-module sidebar-module-inset right-sidebar">
+						<img src="<%= asset_path( 'kostek.jpg' ) %>" height="160" width="157" class="img-rounded">
+
+						<h3 class="colorBlueText">Few words about me</h3>
+						<p class="text-justify my-blog-small">
+							Hi! I'm Michał Kostewicz, creator of this blog.
+							I'm living, studying and working in Warsaw, Poland. My speciality of study
+							is IT on Polish-Japanese Academy Of Information Technology. Currently I'm
+							working as a Junior Java programmer and honestly love my job. I have wonderful
+							wife and daughter that I loved even more than my job. :D
+						</p>
+					</div>
+					<div class="sidebar-module right-sidebar">
+						<h3 class="colorBlueText">Find me elsewhere</h3>
+						<ol class="list-unstyled smallMenuText">
+							<li>
+								<%= icon('github', class: 'strong') %>
+								<%= link_to "GitHub", "https://github.com/k0staa", :target => "_blank" %>
+							</li>
+							<li>
+								<%= icon('twitter', class: 'strong') %>
+								<%= link_to "Twitter", "https://twitter.com/MKostewicz", :target => "_blank" %>
+							</li>
+							<li>
+								<i class="icon-large icon-search"></i>
+							</li>
+						</ol>
+					</div>
+					<div class="sidebar-module">
+
+<!--
+						<%= render partial: 'archive', :locals => { :articles_months => @articles_months} %>
+-->
+						<%= render partial: 'tag', :locals => { :tags => @tags} %>
+					</div>
+					<div class="sidebar-module sidebar-module-inset right-sidebar">
+						<%= link_to image_tag( "dajsiepoznac4.png"), "http://www.maciejaniserowicz.com/daj-sie-poznac/", :class=>"image-rounded"%>
+					</div>
+				</div><!-- /.blog-sidebar -->
+			</div><!-- /.row -->
+
+		</div><!-- /.container -->
+		<footer class="blog-footer">
+			<div class="container">
+				This blog is made using Ruby on Rails! Creator and owner: Michał Kostewicz. <a href="#">Back to top</a>
+
+			</div>
+		</footer>
+
+	</body>
+</html>

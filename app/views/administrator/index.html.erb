@@ -1,0 +1,25 @@
+<h1>Add/edit/show blog articles</h1>
+<a class="btn btn-default"role="button" <%= link_to 'New article', new_article_path %> </a>
+<a class="btn btn-default"role="button" <%= link_to 'New Tag', new_tag_path %> </a>
+
+</br>
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Create timestamp</th>
+    <th>Options</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.created_at %></td>
+      <td><%= link_to 'Show', article_path(article) %>
+      <%= link_to 'Edit', edit_article_path(article) %>
+      <%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Show comments', comment_path(:id => article.id) %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,9 @@
+development:
+  name: 'someuser'
+  password: 'somepassword'
+test:
+  name: 'testuser'
+  password: 'testpassword' 
+production:
+  name: 'poduser'
+  password: 'prodpassword'

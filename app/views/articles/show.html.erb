@@ -1,0 +1,20 @@
+<div class="blog-post">
+	<h2 class="my-blog-title"><%= @article.title %></h2>
+	<p class="blog-post-meta">
+		Created on <%= @article.created_at %>
+	</p>
+	<div class="my-blog">
+		<%= @article.text.try(:html_safe) %>
+	</div>
+
+</div>
+
+<br />
+<!--
+<h4>Comments</h4>
+<%= render @article.comments %>
+<br />
+<h4>Add a comment:</h4>
+<%= render 'comments/form' %>-->
+
+<%= link_to 'Back', articles_path , :class => 'btn btn-default' %>

@@ -1,0 +1,22 @@
+<div class="my-blog">
+	<h3 class="colorBlueText">Tags</h3>
+
+	<% @tagss = Tag.all %>
+	<% @tagss.each do |tag| %>
+	<div class="smallMenuMonthText colorBlueText">
+		<%= h tag.name %>
+	</div>
+
+	<ol class="list-unstyled smallMenuText">
+
+		<% @artic = tag.articles %>
+		<% @artic.each do |art| %>
+
+		<li>
+			<%= icon('angle-right', class: 'strong') %><%= h link_to art.title, article_path(art) %>
+		</li>
+		<% end %>
+	</ol>
+	<% end %>
+
+</div>
